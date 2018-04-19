@@ -11,10 +11,7 @@ import com.my.blog.website.model.Bo.RestResponseBo;
 import com.my.blog.website.model.Vo.CommentVo;
 import com.my.blog.website.model.Vo.ContentVo;
 import com.my.blog.website.model.Vo.MetaVo;
-import com.my.blog.website.service.ICommentService;
-import com.my.blog.website.service.IContentService;
-import com.my.blog.website.service.IMetaService;
-import com.my.blog.website.service.ISiteService;
+import com.my.blog.website.service.*;
 import com.my.blog.website.utils.IPKit;
 import com.my.blog.website.utils.PatternKit;
 import com.my.blog.website.utils.TaleUtils;
@@ -53,6 +50,9 @@ public class IndexController extends BaseController {
     @Resource
     private ISiteService siteService;
 
+    @Resource
+    private IOptionService optionService;
+
     /**
      * 首页
      *
@@ -60,6 +60,7 @@ public class IndexController extends BaseController {
      */
     @GetMapping(value = "/")
     public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+        this.title(request, optionService.getOptionByName("site_title").getValue());
         return this.index(request, 1, limit);
     }
 
