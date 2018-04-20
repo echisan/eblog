@@ -1,11 +1,6 @@
 package com.my.blog.website.model.Vo;
 
-import java.io.Serializable;
-
-/**
- * @author 
- */
-public class ContentVo implements Serializable {
+public class ContentVo {
     /**
      * post表主键
      */
@@ -82,6 +77,11 @@ public class ContentVo implements Serializable {
     private Boolean allowFeed;
 
     /**
+     * 首页封面地址
+     */
+    private String cover;
+
+    /**
      * 内容文字
      */
     private String content;
@@ -101,7 +101,7 @@ public class ContentVo implements Serializable {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getSlug() {
@@ -109,7 +109,7 @@ public class ContentVo implements Serializable {
     }
 
     public void setSlug(String slug) {
-        this.slug = slug;
+        this.slug = slug == null ? null : slug.trim();
     }
 
     public Integer getCreated() {
@@ -141,7 +141,7 @@ public class ContentVo implements Serializable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type == null ? null : type.trim();
     }
 
     public String getStatus() {
@@ -149,7 +149,7 @@ public class ContentVo implements Serializable {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = status == null ? null : status.trim();
     }
 
     public String getTags() {
@@ -157,7 +157,7 @@ public class ContentVo implements Serializable {
     }
 
     public void setTags(String tags) {
-        this.tags = tags;
+        this.tags = tags == null ? null : tags.trim();
     }
 
     public String getCategories() {
@@ -165,7 +165,7 @@ public class ContentVo implements Serializable {
     }
 
     public void setCategories(String categories) {
-        this.categories = categories;
+        this.categories = categories == null ? null : categories.trim();
     }
 
     public Integer getHits() {
@@ -208,11 +208,19 @@ public class ContentVo implements Serializable {
         this.allowFeed = allowFeed;
     }
 
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover == null ? null : cover.trim();
+    }
+
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.content = content == null ? null : content.trim();
     }
 }

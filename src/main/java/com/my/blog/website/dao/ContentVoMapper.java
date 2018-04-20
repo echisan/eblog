@@ -3,12 +3,9 @@ package com.my.blog.website.dao;
 import com.my.blog.website.model.Bo.ArchiveBo;
 import com.my.blog.website.model.Vo.ContentVo;
 import com.my.blog.website.model.Vo.ContentVoExample;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
-@Component
 public interface ContentVoMapper {
     long countByExample(ContentVoExample example);
 
@@ -38,7 +35,7 @@ public interface ContentVoMapper {
 
     int updateByPrimaryKey(ContentVo record);
 
-    List<ArchiveBo> findReturnArchiveBo();
-
     List<ContentVo> findByCatalog(Integer mid);
+
+    List<ArchiveBo> findReturnArchiveBo();
 }
