@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 @MapperScan("com.my.blog.website.dao")
 @SpringBootApplication
 @EnableTransactionManagement
-public class CoreApplication {
+public class CoreApplication extends SpringBootServletInitializer {
     @Bean(initMethod = "init", destroyMethod = "close")
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
@@ -41,10 +41,10 @@ public class CoreApplication {
         return new DataSourceTransactionManager(dataSource());
     }
 
-//    @Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-//        return super.configure(builder);
-//    }
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(CoreApplication.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(CoreApplication.class, args);
